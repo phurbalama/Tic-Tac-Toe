@@ -1,0 +1,25 @@
+*{
+    font-family: Verdana;
+
+}
+caption{
+    font-size: 40pt;
+}
+
+tbody td, tfoot td {
+    width: 1in;
+    height: 1in;
+    background: orangered;
+    border: solid 1px black;
+    font-size: 30pt;
+    text-align: center;
+}
+tfoot td {
+    font-size: 15pt;
+    text-align: left;
+    padding: 3px;
+}
+
+table{
+    border-collapse: collapse;
+}

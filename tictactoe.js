@@ -1,7 +1,10 @@
+
+//function to validate the move of the user
 $(function() {
     var xOrO = "X";
     var count = 0;
-
+    
+    //gets table body and table data element to change the value of empty boxes
     $("tbody td").click(function(){
         var currentValue = $(this).text();
         if(currentValue != "?" )

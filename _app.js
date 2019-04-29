@@ -3,10 +3,7 @@
      https://expressjs.com/en/starter/static-files.html
      https://expressjs.com/en/starter/hello-world.html
 */
-/*
-147 258 369
-753 159
-*/
+
 
 const express = require('express')
 const app = express()
@@ -114,6 +111,7 @@ app.get('/tictactoe', (req, res ) => {
 
 })
 
+//listening to port 3000 
 app.listen(port, () => {  
     console.log(`Example app listening on port ${port}!`) 
 })

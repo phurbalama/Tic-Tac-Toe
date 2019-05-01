@@ -58,11 +58,7 @@ app.get('/tictactoe', (req, res ) => {
     // logic to determine a winner
     let moves = req.query.moves
     let aMoves = moves.split("");
-    // if((aMoves[0,1,2]=="X" ||"O")||(aMoves[3,4,5]=="X"||"O"){
-    //     status.whoWon = aMoves[0];
-    //     status.winningCombo =  [0,1,2]
-    //     status.isWinner = true
-    // }
+    
     
      if (aMoves[0] == "X"  && aMoves[1] == "X" && aMoves[2] == "X" || (aMoves[0] == "O"&& aMoves[1] == "O" && aMoves[2] == "O")){
       

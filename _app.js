@@ -58,68 +58,39 @@ app.get('/tictactoe', (req, res ) => {
     // logic to determine a winner
     let moves = req.query.moves
     let aMoves = moves.split("");
+     
+      for(let i = 0;i<7;i++)
+    {
+       if(moves == winningComboO[i])
+       {
+           status.whoWon = "O";
+          // let combo = 'Winning Combo : ';
+           for(let i = 0;i<aMoves.length;i++)
+           {
+               if(aMoves[i]=='O')
+               {
+                status.winningCombo.push(i);
+               }
+
+
+           }
+           status.isWinner = true;
+       }
+
+       else if(moves == winningComboX[i])
+       {
+           status.whoWon = "X";
+           for(let i = 0;i<aMoves.length;i++)
+           {
+               if(aMoves[i]=='X')
+               {
+               status.winningCombo.push(i);
+               }
+           }
+           status.isWinner = true;
+       }
+    }
     
-    
-     if (aMoves[0] == "X"  && aMoves[1] == "X" && aMoves[2] == "X" || (aMoves[0] == "O"&& aMoves[1] == "O" && aMoves[2] == "O")){
-      
-        status.whoWon = aMoves[0];
-        status.winningCombo =  [0,1,2]
-        status.isWinner = true
-
-    }
-    else if (aMoves[3] == "X" && aMoves[4] == "X" && aMoves[5] == "X" || (aMoves[3] == "O"&& aMoves[4] == "O" && aMoves[5] == "O")){
-        
-    status.whoWon = aMoves[3]
-    status.winningCombo =  [3,4,5]
-    status.isWinner = true
-
-    }
-    else if (aMoves[6] == "X"&& aMoves[7] == "X" && aMoves[8] == "X" || (aMoves[6] == "O"&& aMoves[7] == "O" && aMoves[8] == "O")){
-        
-    status.whoWon = aMoves[6]
-    status.winningCombo =  [6,7,8]
-    status.isWinner = true
-
-    }
-    else if (aMoves[0] == "X" && aMoves[3] == "X" && aMoves[6] == "X" || (aMoves[0] == "O"&& aMoves[3] == "O" && aMoves[6] == "O")){
-        
-    status.whoWon = aMoves[0]
-    status.winningCombo =  [0,3,6]
-    status.isWinner = true
-
-    }
-    else if (aMoves[1] == "X" && aMoves[4] == "X" && aMoves[7] == "X" || (aMoves[1] == "O"&& aMoves[4] == "O" && aMoves[7] == "O")){
-        
-    status.whoWon = aMoves[1]
-    status.winningCombo =  [1,4,7]
-    status.isWinner = true
-
-    }
-    else if (aMoves[2] == "X" && aMoves[5] == "X" && aMoves[8] == "X" || (aMoves[2] == "O"&& aMoves[5] == "O" && aMoves[8] == "O")){
-        
-    status.whoWon = aMoves[2]
-    status.winningCombo =  [2,5,8]
-    status.isWinner = true
-
-    }
-    else if (aMoves[2] == "X" && aMoves[4] == "X" && aMoves[6] == "X" || (aMoves[2] == "O"&& aMoves[4] == "O" && aMoves[6] == "O")){
-        
-        status.whoWon = aMoves[2]
-        status.winningCombo =  [2,4,6]
-        status.isWinner = true
-    
-        }
-     else if (aMoves[0] == "X" && aMoves[4] == "X" && aMoves[8] == "X" || (aMoves[0] == "O"&& aMoves[4] == "O" && aMoves[8] == "O")){
-        
-            status.whoWon = aMoves[0]
-            status.winningCombo =  [0,4,8]
-            status.isWinner = true
-        
-            }
-
-
-
-
     res.json(status)
 
 })

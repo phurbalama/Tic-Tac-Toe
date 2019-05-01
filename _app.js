@@ -8,15 +8,32 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const winningCombo = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-    [2,4,6],
-    [0,4,8]
+const winningComboO = [
+        "OOO345678",
+        "012OOO678",
+        "012345OOO",
+        "O12O45O78",
+        "0O23O56O8",
+        "01O3O5O78",
+        "O123O567O"
+   // ["O","O","O","3","4","5","6","7","8"],
+    //['O','O','O',3,4,5,6,7,8]
+    //[3,4,5],
+    // [6,7,8],
+    // [0,3,6],
+    // [1,4,7],
+    // [2,5,8],
+    // [2,4,6],
+    // [0,4,8]
+]
+const winningComboX = [
+    "XXX345678",
+    "012XXX678",
+    "012345XXX",
+    "X12X45X78",
+    "0X23X56X8",
+    "01X3X5X78",
+    "X123X567X"
 ]
 
 app.use(express.static('public'))

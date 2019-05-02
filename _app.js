@@ -3,38 +3,25 @@
      https://expressjs.com/en/starter/static-files.html
      https://expressjs.com/en/starter/hello-world.html
 */
-
+/*
+147 258 369
+753 159
+*/
 
 const express = require('express')
 const app = express()
 const port = 3000
-const winningComboO = [
-        "OOO345678",
-        "012OOO678",
-        "012345OOO",
-        "O12O45O78",
-        "0O23O56O8",
-        "01O3O5O78",
-        "O123O567O"
-   // ["O","O","O","3","4","5","6","7","8"],
-    //['O','O','O',3,4,5,6,7,8]
-    //[3,4,5],
-    // [6,7,8],
-    // [0,3,6],
-    // [1,4,7],
-    // [2,5,8],
-    // [2,4,6],
-    // [0,4,8]
-]
-const winningComboX = [
-    "XXX345678",
-    "012XXX678",
-    "012345XXX",
-    "X12X45X78",
-    "0X23X56X8",
-    "01X3X5X78",
-    "X123X567X"
-]
+const winners = [ 
+
+    {p1: 0, p2: 1, p3: 2},
+    {p1: 3, p2: 4, p3: 5},
+    {p1: 6, p2: 7, p3: 8},
+    {p1: 0, p2: 3, p3: 6},
+    {p1: 1, p2: 4, p3: 7},
+    {p1: 2, p2: 5, p3: 8},
+    {p1: 0, p2: 4, p3: 8},
+    {p1: 2, p2: 4, p3: 6},
+    ]
 
 app.use(express.static('public'))
 
@@ -58,44 +45,22 @@ app.get('/tictactoe', (req, res ) => {
     // logic to determine a winner
     let moves = req.query.moves
     let aMoves = moves.split("");
-     
-      for(let i = 0;i<7;i++)
-    {
-       if(moves == winningComboO[i])
-       {
-           status.whoWon = "O";
-          // let combo = 'Winning Combo : ';
-           for(let i = 0;i<aMoves.length;i++)
-           {
-               if(aMoves[i]=='O')
-               {
-                status.winningCombo.push(i);
-               }
 
+    winners.find(e=> {
+        if(aMoves[e.p1]==aMoves[e.p2] && aMoves[e.p2]== aMoves[e.p3] && aMoves[e.p1] != "?")
+        {
+            
+            status.whoWon =  (aMoves[e.p1] == "X") ? "X" : "O"
+            status.winningCombo = [e.p1,e.p2,e.p3]
+            status.isWinner = true
+        }
+       
+    })
 
-           }
-           status.isWinner = true;
-       }
-
-       else if(moves == winningComboX[i])
-       {
-           status.whoWon = "X";
-           for(let i = 0;i<aMoves.length;i++)
-           {
-               if(aMoves[i]=='X')
-               {
-               status.winningCombo.push(i);
-               }
-           }
-           status.isWinner = true;
-       }
-    }
-    
     res.json(status)
 
 })
 
-//listening to port 3000 
 app.listen(port, () => {  
     console.log(`Example app listening on port ${port}!`) 
 })

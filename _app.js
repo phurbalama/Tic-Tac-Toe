@@ -11,6 +11,8 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const path = require('path');
+
 const winners = [ 
 
     {p1: 0, p2: 1, p3: 2},
@@ -24,6 +26,11 @@ const winners = [
     ]
 
 app.use(express.static('public'))
+
+app.get('/',(req,res) => {
+    console.log(__dirname);
+    res.sendFile(path.join(__dirname + 'index.html'));
+})
 
 app.get('/hello', (req, res) =>  {
     res.send('Hello World!')

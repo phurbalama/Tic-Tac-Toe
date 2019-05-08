@@ -13,6 +13,7 @@ const app = express()
 const port = 3000
 const path = require('path');
 
+// All the winning combinations specified by their index
 const winners = [ 
 
     {p1: 0, p2: 1, p3: 2},
@@ -53,10 +54,12 @@ app.get('/tictactoe', (req, res ) => {
     let moves = req.query.moves
     let aMoves = moves.split("");
 
+     //returns if the index of p1 p2 p3 are equal and not ?
     winners.find(e=> {
         if(aMoves[e.p1]==aMoves[e.p2] && aMoves[e.p2]== aMoves[e.p3] && aMoves[e.p1] != "?")
         {
             
+             // if statement to assign if the current winning combo is O or X
             status.whoWon =  (aMoves[e.p1] == "X") ? "X" : "O"
             status.winningCombo = [e.p1,e.p2,e.p3]
             status.isWinner = true
